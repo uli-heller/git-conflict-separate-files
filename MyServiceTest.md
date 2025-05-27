@@ -8,6 +8,21 @@ code for example in Java.
 
 Note: For some features, there are no tests.
 
+Imports
+-------
+
+Imports are kind of special to Java.
+Basically, you list all of the external classes
+you use. We have checkstyle rules to keep the
+imports sorted.
+
+- class 010
+- class 030
+- class 100
+
+- interface 100
+- interface 200
+
 Feature D Test
 --------------
 
