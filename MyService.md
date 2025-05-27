@@ -44,4 +44,4 @@ Some initial implementation details for feature U
 Feature V
 ---------
 
-Some implementation details for feature W
+Some implementation details for feature V
