@@ -75,7 +75,62 @@ Avoid doing anything underneath the checkout folder!
 
 ### Rebase "feature-u" to "main"
 
+You realize that "feature-u" isn't based on HEAD of main:
 
+```sh
+$ git log --graph --oneline main feature-u
+* a8504e8 (HEAD -> main) Update all branches
+* 19798ea Added appendices
+* 70b6393 Feature W
+* c246429 More work on tests
+* 18521ad Fixed test A
+* 4c96670 Fixed feature V - pt2
+* 7e009b0 Fixed feature V
+* 8efc3e9 Typo
+* 646c190 More docs related to branches
+| * 2c8150f (feature-u) Work on U
+| * abf7228 Work on U
+| * cb8d160 U
+| * fdf3406 Tests for U
+| * 80d6cf3 Tests for U
+| * 8023eb5 Tests for U
+| * 1757663 Fix for V - tests
+| * e57684f Fix for V
+| * d123ed7 Started work on U
+|/  
+* 802dca2 Fixed test for A
+* 4c6a178 Fixed junit test V, added test for A
+* 399c664 Describe how to create branch feature
+...
+```
+
+There are lots of changes in main which aren't in feature-u
+(646c190..a8504e8). In order to simplify future merges from
+feature-u to main, you decide to rebase it:
+
+```sh
+  # Make sure you have the latest branches
+$ git checkout main
+$ git pull
+$ git checkout feature-u
+$ git pull
+
+  # Start the rebase
+$ git rebase main
+  # See lots of conflicts -> solve -> git rebase --continue
+  # Tally: XXXX
+$ git rebase --continue
+```
+
+Probably, you already hate this procedure!
+You have to resolve lots of conflicts
+and maybe you think: Why the hell
+didn't I create a separate test file?
+
+BTW: There are other workflows
+where the number of conflicts is reduced.
+For this demo, we **want** to use a workflow
+based on "rebase"!
 
 Appendices
 ----------
