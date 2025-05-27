@@ -68,6 +68,19 @@ git checkout -b feature-t
 git push --tags
 git push -t origin feature-t
 
+# Back to main
+git checkout main
+# Modify README.md -> commit, push
+git commit -m "Describe how to create branch feature-t" .
+git push
+# Additional modifications...
+
+# Start branch for Uli's feature
+git tag feature-u-start
+git checkout -b feature-u
+git push --tags
+git push -t origin feature-u
+
 cd "${OLD_PWD}"
 ```
 
