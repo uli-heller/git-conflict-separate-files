@@ -109,11 +109,7 @@ There are lots of changes in main which aren't in feature-u
 feature-u to main, you decide to rebase it:
 
 ```sh
-  # Make sure you have the latest branches
-$ git checkout main
-$ git pull
 $ git checkout feature-u
-$ git pull
 
   # Start the rebase
 $ git rebase main
@@ -136,7 +132,6 @@ based on "rebase"!
 
 ```sh
 git checkout main
-git pull
 git rebase main-2
 # Now main has lots of additional changes
 
