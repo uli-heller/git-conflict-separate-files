@@ -36,6 +36,11 @@ Feature S
 
 Some implementation details for feature S
 
+Feature T
+---------
+
+Tom starts to work on feature t.
+
 Feature V
 ---------
 
