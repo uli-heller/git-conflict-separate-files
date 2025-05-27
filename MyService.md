@@ -14,7 +14,8 @@ Some implementation details for feature A
 Feature B
 ---------
 
-Some implementation details for feature B
+Some implementation details for feature B,
+modified
 
 Feature C
 ---------
@@ -34,7 +35,8 @@ Some implementation details for feature R
 Feature S
 ---------
 
-Some implementation details for feature S
+Some implementation details for feature S,
+modified
 
 Feature V
 ---------
