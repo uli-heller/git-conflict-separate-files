@@ -132,6 +132,43 @@ where the number of conflicts is reduced.
 For this demo, we **want** to use a workflow
 based on "rebase"!
 
+### Simulate Some Progress On Main And Rebase Again
+
+```sh
+git checkout main
+git pull
+git rebase main-2
+# Now main has lots of additional changes
+
+git checkout feature-u
+git rebase main
+# Lots of conflicts again -> solve -> git rebase --continue
+git rebase --continue
+```
+
+### Merge Tom's Work On Main And Rebase Again
+
+```sh
+git checkout main
+git merge feature-t
+# Some conflicts -> solve -> git merge --continue
+git merge continue
+# Now main has  additional changes
+
+git checkout feature-u
+git rebase main
+# Lots of conflicts again -> solve -> git rebase --continue
+git rebase --continue
+```
+
+### Finally Merge Uli's Work
+
+```
+git checkout main
+git merge feature-u
+# No merge conflicts
+```
+
 Appendices
 ----------
 
