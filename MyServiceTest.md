@@ -27,7 +27,7 @@ imports sorted.
 Feature A Test
 --------------
 
-Some implementation details of the unit test for feature D
+Some implementation details of the unit test for feature A
 
 Feature D Test
 --------------
