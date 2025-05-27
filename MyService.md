@@ -41,17 +41,17 @@ Feature U
 
 Some initial implementation details for feature U
 
-- u.1
-- u.2
-- u.3
-- u.4
+- u.1 ... with some modifications   
+- u.2 ... with some modifications
+- u.3 ... with some modifications
+- u.4 ... with some modifications
 - u.5 ... with some modifications
 - u.6 ... with some modifications
-- u.7
-- u.8
-- u.9
-- u.10
-- u.11
+- u.7 ... with some modifications
+- u.8 ... with some modifications
+- u.9 ... with some modifications
+- u.10 ... with some modifications
+- u.11 ... with some modifications
 
 Feature V
 ---------

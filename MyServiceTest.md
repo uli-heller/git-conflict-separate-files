@@ -20,6 +20,10 @@ imports sorted.
 - class 030
 - class 100
 - class 101
+- class 251
+- class 252
+- class 253
+- class 254
 - class 350
 - class 352
 - class 353
@@ -34,6 +38,11 @@ imports sorted.
 - interface 603
 - interface 604
 - interface 605
+- interface 611
+- interface 612
+- interface 613
+- interface 614
+- interface 615
 
 Feature A Test
 --------------
@@ -63,11 +72,17 @@ Initial work on feature U tests
 - tu1
 - tu2
 - tu3
-- tu4
-- tu5
-- tu6
-- tu7
-- tu8
+- tu4 ... with modifications
+- tu5 ... with modifications
+- tu6 ... with modifications
+- tu7 ... with modifications
+- tu8 ... with modifications
+- tu9
+- tu10
+- tu11
+- tu12
+- tu13
+- tu14
 
 Feature V Test
 --------------
