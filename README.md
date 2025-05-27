@@ -66,7 +66,7 @@ git push -u origin main
 git tag feature-t-start
 git checkout -b feature-t
 git push --tags
-git push -t origin feature-t
+git push -u origin feature-t
 
 # Back to main
 git checkout main
@@ -79,7 +79,7 @@ git push
 git tag feature-u-start
 git checkout -b feature-u
 git push --tags
-git push -t origin feature-u
+git push -u origin feature-u
 
 cd "${OLD_PWD}"
 ```
