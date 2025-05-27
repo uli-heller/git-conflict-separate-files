@@ -33,6 +33,50 @@ the start.
 
 I found a way to fix this later on!
 
+See The Issue
+-------------
+
+### Extract The Repo
+
+```sh
+mkdir demo
+xz -cd data/git-conflict-separate-files.tar.xz\
+|(cd demo; tar xf -)
+```
+
+Note: It may be kind of irritating.
+After extraction, you have these files and folders:
+
+- git-conflict-separate-files
+  - .git (probably hidden)
+  - .gitignore (probably hidden)
+  - README.md
+  - MyService.md
+  - MyServiceTest.md
+  - data
+    - git-conflict-separate-files.tar.xz
+  - demo
+    - git-conflict-separate-files
+      - .git (probably hidden)
+      - README.md
+      - MyService.md
+      - MyServiceTest.md
+
+The demo works only underneath "demo/git-conflict-separate-files"!
+
+### Change Your Working Directory
+
+```
+cd demo/git-conflict-separate-files
+```
+
+Make sure you're always underneath this folder!
+Avoid doing anything underneath the checkout folder!
+
+### Rebase "feature-u" to "main"
+
+
+
 Appendices
 ----------
 
