@@ -45,8 +45,8 @@ Some initial implementation details for feature U
 - u.2
 - u.3
 - u.4
-- u.5
-- u.6
+- u.5 ... with some modifications
+- u.6 ... with some modifications
 - u.7
 - u.8
 - u.9
