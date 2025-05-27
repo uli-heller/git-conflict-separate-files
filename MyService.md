@@ -42,3 +42,9 @@ Feature V
 Some implementation details for feature V,
 modified
 
+Feature W
+---------
+
+Some implementation details for feature W,
+modified
+

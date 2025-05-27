@@ -53,3 +53,8 @@ Feature V Test
 
 Some implementation details of the unit test for feature V,
 modified later on for two times
+
+Feature W Test
+--------------
+
+Some implementation details of the unit test for feature W
