@@ -19,9 +19,13 @@ imports sorted.
 - class 010
 - class 030
 - class 101
+- class 201
+- class 501
 
 - interface 100
 - interface 200
+- interface 300
+- interface 400
 
 Feature A Test
 --------------
@@ -48,4 +52,4 @@ Feature V Test
 --------------
 
 Some implementation details of the unit test for feature V,
-modified later on
+modified later on for two times
