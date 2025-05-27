@@ -16,10 +16,14 @@ Basically, you list all of the external classes
 you use. We have checkstyle rules to keep the
 imports sorted.
 
-- class 010
 - class 030
 - class 100
 - class 101
+- class 350
+- class 352
+- class 353
+- class 354
+- class 355
 
 - interface 100
 - interface 200
@@ -48,6 +52,15 @@ Feature U Test
 --------------
 
 Initial work on feature U tests
+
+- tu1
+- tu2
+- tu3
+- tu4
+- tu5
+- tu6
+- tu7
+- tu8
 
 Feature V Test
 --------------
