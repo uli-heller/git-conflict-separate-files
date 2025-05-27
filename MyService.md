@@ -39,4 +39,5 @@ Some implementation details for feature S
 Feature V
 ---------
 
-Some implementation details for feature W
+Some implementation details for feature V
+
