@@ -10,6 +10,7 @@ Feature A
 ---------
 
 Some implementation details for feature A
+modified
 
 Feature B
 ---------
@@ -21,16 +22,19 @@ Feature C
 ---------
 
 Some implementation details for feature C
+modified
 
 Feature D
 ---------
 
 Some implementation details for feature D
+modified
 
 Feature R
 ---------
 
 Some implementation details for feature R
+modified
 
 Feature S
 ---------
