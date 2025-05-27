@@ -40,6 +40,15 @@ Feature T
 ---------
 
 Tom starts to work on feature t.
+More work happened!
+
+### Subfeature T.1
+
+### Subfeature T.2
+
+### Subfeature T.3
+
+### Subfeature T.4
 
 Feature V
 ---------
