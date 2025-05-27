@@ -62,3 +62,19 @@ git push -u origin main
 
 cd "${OLD_PWD}"
 ```
+
+Using This Repo
+---------------
+
+```
+WORK=(path-to-location-where-you-store-your-work)
+OLD_PWD="$(pwd)"
+cd $WORK
+
+git clone git@github.com:uli-heller/git-conflict-separate-files.git
+
+cd git-conflict-separate-files
+git fetch --all
+
+cd "${OLD_PWD}"
+```
