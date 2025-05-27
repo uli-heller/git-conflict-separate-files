@@ -17,7 +17,6 @@ you use. We have checkstyle rules to keep the
 imports sorted.
 
 - class 010
-- class 030
 - class 101
 - class 202
 - class 502
@@ -28,12 +27,6 @@ imports sorted.
 - interface 200
 - interface 400
 - interface 401
-
-Feature A Test
---------------
-
-Some implementation details of the unit test for feature A
-with a modification
 
 Feature D Test
 --------------
