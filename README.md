@@ -33,10 +33,10 @@ the start.
 
 I found a way to fix this later on!
 
-Setting Up This Repo
---------------------
+Appendices
+----------
 
-### Groundwork
+### Setting Up This Repo
 
 ```
 WORK=(path-to-location-where-you-store-your-work)
@@ -81,11 +81,19 @@ git checkout -b feature-u
 git push --tags
 git push -u origin feature-u
 
+# Branch for future modifications of "main"
+git checkout -b main-2
+# Do some modifications
+git commit -m "Work on ..."
+git push -u origin main-2
+
+# Back to main
+git checkout main
+
 cd "${OLD_PWD}"
 ```
 
-Using This Repo
----------------
+### Using This Repo
 
 ```
 WORK=(path-to-location-where-you-store-your-work)
