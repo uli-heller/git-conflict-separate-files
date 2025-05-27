@@ -60,6 +60,14 @@ git commit -m "Added a first version of README.md"
 git remote add origin git@github.com:uli-heller/git-conflict-separate-files.git
 git push -u origin main
 
+# Modify README.md, add several additional files, ...
+
+# Start branch for Tom's feature
+git tag feature-t-start
+git checkout -b feature-t
+git push --tags
+git push -t origin feature-t
+
 cd "${OLD_PWD}"
 ```
 
