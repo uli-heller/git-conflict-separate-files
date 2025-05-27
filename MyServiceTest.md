@@ -18,7 +18,6 @@ imports sorted.
 
 - class 010
 - class 030
-- class 100
 - class 101
 
 - interface 100
@@ -28,6 +27,7 @@ Feature A Test
 --------------
 
 Some implementation details of the unit test for feature A
+with a modification
 
 Feature D Test
 --------------
