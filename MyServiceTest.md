@@ -6,20 +6,7 @@ the implementation of unit tests for a service.
 In real world, this file contains some source
 code for example in Java.
 
-Feature A Test
---------------
-
-Some implementation details of the unit test for feature A
-
-Feature B Test
---------------
-
-Some implementation details of the unit test for feature B
-
-Feature C Test
---------------
-
-Some implementation details of the unit test for feature C
+Note: For some features, there are no tests.
 
 Feature D Test
 --------------
