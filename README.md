@@ -107,3 +107,18 @@ git fetch --all
 
 cd "${OLD_PWD}"
 ```
+
+### Update All Branches
+
+```sh
+WORK=(path-to-location-where-you-store-your-work)
+OLD_PWD="$(pwd)"
+cd $WORK/git-conflict-separate-files
+
+git branch -r\
+|grep -v HEAD\
+| cut -d / -f 2\
+| while read -r b; do git checkout "$b"; git pull; done
+
+cd "${OLD_PWD}"
+```
