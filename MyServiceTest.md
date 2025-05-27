@@ -16,6 +16,7 @@ Basically, you list all of the external classes
 you use. We have checkstyle rules to keep the
 imports sorted.
 
+- class 011
 - class 030
 - class 100
 - class 101
