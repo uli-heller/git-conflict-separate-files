@@ -169,6 +169,233 @@ git merge feature-u
 # No merge conflicts
 ```
 
+Move Tests Into A Separate File
+-------------------------------
+
+We've seen lots of conflicts related to "MyServiceTest.md".
+We're trying to move our tests into a separate file "MyServiceFeatureUTest.md".
+Hopefully, we will see much less conflicts!
+
+### Extract The Repo Again
+
+```sh
+rm -rf demo
+mkdir demo
+xz -cd data/git-conflict-separate-files.tar.xz\
+|(cd demo; tar xf -)
+```
+
+### Change Your Working Directory Again
+
+```
+cd demo/git-conflict-separate-files
+```
+
+Make sure you're always underneath this folder!
+Avoid doing anything underneath the checkout folder!
+
+### Find Common Ancestor For "main" And "feature-u"
+
+```sh
+$ git merge-base --all main feature-u
+802dca213e80fdd45699e03dad8e7be4f99b2053
+
+$ git log --graph --oneline main feature-u --not "$(git merge-base --all main feature-u)~"
+* a8504e8 (HEAD -> main) Update all branches
+* 19798ea Added appendices
+* 70b6393 Feature W
+* c246429 More work on tests
+* 18521ad Fixed test A
+* 4c96670 Fixed feature V - pt2
+* 7e009b0 Fixed feature V
+* 8efc3e9 Typo
+* 646c190 More docs related to branches
+| * 2c8150f (feature-u) Work on U
+| * abf7228 Work on U
+| * cb8d160 U
+| * fdf3406 Tests for U
+| * 80d6cf3 Tests for U
+| * 8023eb5 Tests for U
+| * 1757663 Fix for V - tests
+| * e57684f Fix for V
+| * d123ed7 Started work on U
+|/  
+* 802dca2 Fixed test for A
+```
+
+### Rewrite Branch "feature-u" To Contain A Copy Of "MyServiceTest.md"
+
+```sh
+$ git checkout -b feature-u-2 802dca2
+$ cp MyServiceTest.md MyServiceFeatureUTest.md
+$ git add MyServiceFeatureUTest.md
+$ git commit -m "Copied MyServiceTest.md -> MyServiceFeatureUTest.md"
+[feature-u-2 b9ec52f] Copied MyServiceTest.md -> MyServiceFeatureUTest.md
+ 1 file changed, 51 insertions(+)
+ create mode 100644 MyServiceFeatureUTest.md
+
+$ git checkout feature-u
+$ git rebase feature-u-2
+Erfolgreich Rebase ausgeführt und refs/heads/feature-u aktualisiert.
+
+$ git branch -d feature-u-2
+Branch feature-u-2 entfernt (war b9ec52f).
+```
+
+### Review History
+
+```sh
+$ git merge-base --all main feature-u
+802dca213e80fdd45699e03dad8e7be4f99b2053
+
+$ git log --graph --oneline main feature-u --not "$(git merge-base --all main feature-u)~"
+* ba43a18 (HEAD -> feature-u) Work on U
+* 3e246ef Work on U
+* 55087fe U
+* a07c159 Tests for U
+* bbba233 Tests for U
+* 77e80cd Tests for U
+* b85dc48 Fix for V - tests
+* a7a20c2 Fix for V
+* 35f6d75 Started work on U
+* b9ec52f Copied MyServiceTest.md -> MyServiceFeatureUTest.md
+| * a8504e8 (main) Update all branches
+| * 19798ea Added appendices
+| * 70b6393 Feature W
+| * c246429 More work on tests
+| * 18521ad Fixed test A
+| * 4c96670 Fixed feature V - pt2
+| * 7e009b0 Fixed feature V
+| * 8efc3e9 Typo
+| * 646c190 More docs related to branches
+|/
+* 802dca2 Fixed test for A
+```
+
+Note: This is similar to the history above.
+"feature-u" shows up near the top since it
+is the freshest branch. All commits show up as
+before but there is an additional commit
+"Copied MyServiceTest.md -> MyServiceFeatureUTest.md"
+and all commit hashes have changed.
+
+### Rewrite All Commits Of "feature-u"
+
+We would like to rewrite most/all commits
+of the branch "feature-u" with these goals:
+
+- MyServiceTest.md ... shall NOT be modified at all
+  (thus there will be no merge conflicts)
+- MyServiceFeatureUTest.md ... shall contain all the
+  modifications from MyServiceTest.md
+
+We achieve this by executing:
+
+```sh
+$ git checkout feature-u
+  # Save the original version of MyServiceTest.md
+$ git show "$(git merge-base --all main feature-u)":MyServiceTest.md >/tmp/MyServiceTest.md
+$ git filter-branch -f --tree-filter \
+  'cp MyServiceTest.md MyServiceFeatureUTest.md; cp /tmp/MyServiceTest.md MyServiceTest.md;' \
+  "$(git merge-base --all main feature-u)..HEAD"
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+	 rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+	 alternative filtering tool such as 'git filter-repo'
+	 (https://github.com/newren/git-filter-repo/) instead.  See the
+	 filter-branch manual page for more details; to squelch this warning,
+	 set FILTER_BRANCH_SQUELCH_WARNING=1.
+Proceeding with filter-branch...
+
+Rewrite ba43a18650d485e05259cbe8624e520a9ded5d6f (10/10) (0 seconds passed, remaining 0 predicted)    
+Ref 'refs/heads/feature-u' was rewritten
+```
+
+### Verify The Changes
+
+```sh
+$ git diff "$(git merge-base --all main feature-u)" HEAD -- MyServiceTest.md
+  # No output
+
+$ git diff "$(git merge-base --all main feature-u)" HEAD -- MyServiceFeatureUTest.md
+diff --git a/MyServiceFeatureUTest.md b/MyServiceFeatureUTest.md
+new file mode 100644
+index 0000000..360001d
+--- /dev/null
++++ b/MyServiceFeatureUTest.md
+@@ -0,0 +1,91 @@
++MyServiceTest
++=============
++
++This is a markdown file representing
+...
++Some implementation details of the unit test for feature V,
++modified later on and again
+
+$ git log --oneline "$(git merge-base --all main feature-u)" HEAD -- MyServiceFeatureUTest.md
+a46bd65 (HEAD -> feature-u) Work on U
+538bc54 Tests for U
+897e668 Tests for U
+a8d54b0 Tests for U
+8e3f61c Fix for V - tests
+2c28bfa Started work on U
+00e7f6d Copied MyServiceTest.md -> MyServiceFeatureUTest.md
+```
+
+### Cleanup "MyServiceFeatureUTest.md"
+
+It is basically a copy of "MyServiceTest.md"
+extended by the tests related to feature-u.
+Delete all tests which are not related to feature-u,
+since they are still within "MyServiceTest.md".
+
+### Rebase Onto Main
+
+```
+git checkout feature-u
+git rebase main
+# Resolve conflicts
+```
+
+### Do A Fast-Forward For Main
+
+```
+git checkout main
+git rebase main-2
+git checkout feature-u
+```
+
+### Rebase Onto Main Again
+
+```
+git checkout feature-u
+git rebase main
+# Resolve conflicts
+```
+
+### Merge "feature-t"
+
+```
+git checkout main
+git merge feature-t
+# Resolve conflicts
+```
+
+### Rebase Onto Main Again
+
+```
+git checkout feature-u
+git rebase main
+# Resolve conflicts
+```
+
+### Merge "feature-u"
+
+```
+git checkout main
+git merge feature-u
+# No conflicts
+```
+
 Appendices
 ----------
 
